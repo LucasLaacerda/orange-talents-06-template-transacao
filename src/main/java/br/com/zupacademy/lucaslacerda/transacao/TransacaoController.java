@@ -6,15 +6,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.transaction.Transactional;
 
 @RestController
-@RequestMapping("/{id}/transacoes")
+@RequestMapping("cartoes/{id}/transacoes")
 public class TransacaoController {
 
     private TransacaoRepository transacaoRepository;
@@ -26,7 +26,7 @@ public class TransacaoController {
     }
 
 
-    @PostMapping(value = "/busca")
+    @GetMapping(value = "/busca")
     @Transactional
     public ResponseEntity<?> buscaUltimasTransacoes(@PathVariable("id") String id,
                                                     @PageableDefault(sort="efetivadaEm",
